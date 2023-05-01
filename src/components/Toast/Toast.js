@@ -8,6 +8,7 @@ import {
 } from 'react-feather';
 
 import VisuallyHidden from '../VisuallyHidden';
+import { ToastContext } from "../ToastProvider/ToastProvider";
 
 import styles from './Toast.module.css';
 
@@ -21,11 +22,11 @@ const ICONS_BY_VARIANT = {
 function Toast({
     toastId,
     variant,
-    handleDismissToast,
     children
 }) {
   const Icon = ICONS_BY_VARIANT[variant]
-  
+  const { handleDismissToast } = React.useContext(ToastContext)
+
   return (
     <div className={`${styles.toast} ${styles[variant]}`}>
       <div className={styles.iconContainer}>
